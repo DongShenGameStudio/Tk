@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://DongShenTeamServer-China.cn/WnJaGaLiQi/C+N/IpauId=?/</</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f8fafc;
+            --card-color: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .description {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        .config-section {
+            background: var(--card-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+        
+        .config-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .config-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            background: white;
+            color: #333;
+        }
+        
+        .config-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .config-button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: var(--card-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: var(--card-color);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            color: #333;
+        }
+        
+        /* 完全重写下拉菜单样式 */
+        .filter-container {
+            position: relative;
+            display: inline-block;
+            min-width: 200px;
+        }
+        
+        .filter-select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            color: #333;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+            padding-right: 35px;
+        }
+        
+        /* 强制修复下拉选项黑底黑字问题 */
+        .filter-select option {
+            background-color: white !important;
+            color: #333 !important;
+            padding: 10px;
+        }
+        
+        /* 针对不同浏览器的特殊处理 */
+        .filter-select::-ms-expand {
+            display: none;
+        }
+        
+        /* 火狐浏览器特殊处理 */
+        @-moz-document url-prefix() {
+            .filter-select {
+                color: #333;
+                text-shadow: 0 0 0 #333;
+            }
+        }
+        
+        .refresh-button {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        .refresh-button:hover {
+            background: #f1f5f9;
+        }
+        
+        .table-container {
+            background: var(--card-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: var(--text-color);
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        th:hover {
+            background-color: #e2e8f0;
+        }
+        
+        tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        .file-name {
+            font-weight: 500;
+            word-break: break-all;
+            color: var(--text-color);
+        }
+        
+        .file-extension {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #475569;
+        }
+        
+        .custom-extension {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .file-size {
+            color: #64748b;
+            white-space: nowrap;
+        }
+        
+        .file-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .preview-btn, .download-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .preview-btn {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .preview-btn:hover {
+            background-color: #059669;
+        }
+        
+        .download-btn {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        .download-btn:hover {
+            background-color: #2563eb;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #64748b;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #dc2626;
+            background: #fef2f2;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #64748b;
+            background: none;
+            border: none;
+        }
+        
+        .modal-close:hover {
+            color: #374151;
+        }
+        
+        .preview-content {
+            max-width: 100%;
+            max-height: calc(100vh - 100px);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .password-modal-content {
+            width: 400px;
+            text-align: center;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .password-submit {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .password-submit:hover {
+            background-color: #2563eb;
+        }
+        
+        .password-error {
+            color: #dc2626;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .search-box, .filter-container, .refresh-button {
+                width: 100%;
+            }
+            
+            .file-actions {
+                flex-direction: column;
+            }
+            
+            .preview-btn, .download-btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .password-modal-content {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>文件管理器</h1>
+            <p class="description">使用DongShenTeam API获取指定账户地址下的文件信息</p>
+        </header>
+        
+        <div class="config-section">
+            <div class="config-title">信息配置</div>
+            <input type="text" class="config-input" id="repo-input" placeholder="用户名/地址" value="">
+            <input type="text" class="config-input" id="branch-input" placeholder="密钥区 (默认为main)" value="main">
+            <button class="config-button" id="load-files">加载</button>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value" id="total-files">-</div>
+                <div class="stat-label">文件总数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="total-size">-</div>
+                <div class="stat-label">总文件大小</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="extension-count">-</div>
+                <div class="stat-label">文件类型数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="custom-files">-</div>
+                <div class="stat-label">其它计算机文件</div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <input type="text" class="search-box" id="search-input" placeholder="搜索文件名...">
+            <div class="filter-container">
+                <select class="filter-select" id="extension-filter">
+                    <option value="">所有文件类型</option>
+                </select>
+            </div>
+            <button class="refresh-button" id="refresh-btn">刷新列表</button>
+        </div>
+        
+        <div class="table-container">
+            <table id="file-table">
+                <thead>
+                    <tr>
+                        <th data-sort="name">文件名</th>
+                        <th data-sort="extension">扩展名</th>
+                        <th data-sort="size">大 小</th>
+                        <th>操作区</th>
+                    </tr>
+                </thead>
+                <tbody id="file-table-body">
+                    <tr>
+                        <td colspan="4" class="loading">请配置信息并点击"加载"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p>DongShenTeam文件管理器 &copy; 2025 | 最后更新: <span id="last-update">-</span></p>
+        </footer>
+    </div>
+
+    <!-- 预览模态框 -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="preview-container"></div>
+        </div>
+    </div>
+
+    <!-- 密码验证模态框 -->
+    <div id="password-modal" class="modal">
+        <div class="modal-content password-modal-content">
+            <h3>下载文件需要验证密码</h3>
+            <input type="password" class="password-input" id="password-input" placeholder="请输入密码">
+            <button class="password-submit" id="password-submit">验证并确认下载</button>
+            <div class="password-error" id="password-error">密码错误，请重试</div>
+        </div>
+    </div>
+
+    <script>
+        // 自定义文件扩展名列表
+        const customExtensions = ['dong0', 'cufyhhd'];
+        
+        // 正确密码
+        const correctPassword = "Zx9!你K7#mQ@2文$R8%tY^6&uI*4(文)oP-你=[9]{0}你|云;<>,.?/云`~!@#$%^&*()_+-=[]{}|;,.<>?/`~A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4Y5z6你!@#$%^&*()_+-=[]{}|;,<>?/`~A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4Y5z6你!@#$%^&*()_+-=[]{}|;,<>?/`~A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5";
+        
+        // 文件类型分类
+        const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'];
+        const videoExtensions = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm', 'mkv'];
+        const audioExtensions = ['mp3', 'wav', 'ogg', 'aac', 'flac', 'm4a'];
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFileManager();
+        });
+
+        function initializeFileManager() {
+            // 设置最后更新时间
+            document.getElementById('last-update').textContent = new Date().toLocaleDateString();
+            
+            // 设置事件监听器
+            setupEventListeners();
+            
+            // 检测设备类型
+            detectDeviceType();
+            
+            // 检测F12开发者工具
+            detectDevTools();
+        }
+
+        function setupEventListeners() {
+            // 加载文件按钮
+            document.getElementById('load-files').addEventListener('click', function() {
+                const repo = document.getElementById('repo-input').value.trim();
+                const branch = document.getElementById('branch-input').value.trim() || 'main';
+                
+                if (!repo) {
+                    alert('请输入配置信息 (格式: 用户名/地址)');
+                    return;
+                }
+                
+                loadFilesFromGitHub(repo, branch);
+            });
+            
+            // 刷新按钮
+            document.getElementById('refresh-btn').addEventListener('click', function() {
+                const repo = document.getElementById('repo-input').value.trim();
+                const branch = document.getElementById('branch-input').value.trim() || 'main';
+                
+                if (!repo) {
+                    alert('请先配置信息');
+                    return;
+                }
+                
+                loadFilesFromGitHub(repo, branch);
+            });
+            
+            // 搜索功能
+            document.getElementById('search-input').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                if (window.currentFiles) {
+                    const filteredFiles = window.currentFiles.filter(file => 
+                        file.name.toLowerCase().includes(searchTerm) || 
+                        file.path.toLowerCase().includes(searchTerm)
+                    );
+                    renderFileTable(filteredFiles);
+                }
+            });
+            
+            // 文件类型筛选
+            document.getElementById('extension-filter').addEventListener('change', function(e) {
+                const selectedExtension = e.target.value;
+                if (window.currentFiles) {
+                    if (selectedExtension === '') {
+                        renderFileTable(window.currentFiles);
+                    } else {
+                        const filteredFiles = window.currentFiles.filter(file => file.extension === selectedExtension);
+                        renderFileTable(filteredFiles);
+                    }
+                }
+            });
+            
+            // 表格排序
+            document.querySelectorAll('th[data-sort]').forEach(th => {
+                th.addEventListener('click', function() {
+                    const sortBy = this.getAttribute('data-sort');
+                    
+                    if (window.currentFiles) {
+                        // 切换排序方向
+                        if (window.currentSort === sortBy) {
+                            window.currentFiles.reverse();
+                        } else {
+                            window.currentFiles.sort((a, b) => {
+                                let aValue = a[sortBy];
+                                let bValue = b[sortBy];
+                                
+                                if (sortBy === 'size') {
+                                    return aValue - bValue;
+                                } else {
+                                    if (aValue < bValue) return -1;
+                                    if (aValue > bValue) return 1;
+                                    return 0;
+                                }
+                            });
+                            window.currentSort = sortBy;
+                        }
+                        
+                        renderFileTable(window.currentFiles);
+                    }
+                });
+            });
+            
+            // 模态框关闭按钮
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+            
+            // 密码提交按钮
+            document.getElementById('password-submit').addEventListener('click', function() {
+                const passwordInput = document.getElementById('password-input');
+                const passwordError = document.getElementById('password-error');
+                
+                if (passwordInput.value === correctPassword) {
+                    // 密码正确，执行下载
+                    const downloadUrl = window.currentDownloadUrl;
+                    const fileName = window.currentDownloadFileName;
+                    
+                    // 使用正确的HTTP下载方式
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', downloadUrl, true);
+                    xhr.responseType = 'blob';
+                    
+                    xhr.onload = function() {
+                        if (this.status === 200) {
+                            const blob = new Blob([this.response]);
+                            const url = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = fileName;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            window.URL.revokeObjectURL(url);
+                        }
+                    };
+                    
+                    xhr.send();
+                    
+                    // 关闭模态框
+                    document.getElementById('password-modal').style.display = 'none';
+                    passwordInput.value = '';
+                    passwordError.style.display = 'none';
+                } else {
+                    // 密码错误
+                    passwordError.style.display = 'block';
+                }
+            });
+            
+            // 点击模态框外部关闭
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        function loadFilesFromGitHub(repo, branch) {
+            // 显示加载状态
+            document.getElementById('file-table-body').innerHTML = '<tr><td colspan="4" class="loading">正在从DongShenTeamServer加载文件列表...</td></tr>';
+            
+            // GitHub API URL
+            const apiUrl = `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`;
+            
+            // 使用fetch获取文件列表
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`DongShenTeam API请求失败: ${response.status} ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.tree) {
+                        throw new Error('无法从DongShenTeam API获取文件列表');
+                    }
+                    
+                    // 处理文件数据
+                    const files = processGitHubFiles(data.tree);
+                    displayFiles(files);
+                })
+                .catch(error => {
+                    console.error('获取文件列表失败:', error);
+                    document.getElementById('file-table-body').innerHTML = 
+                        `<tr><td colspan="4" class="error">获取文件列表失败: ${error.message}<br>请检查用户名及地址和密钥区是否正确</td></tr>`;
+                });
+        }
+
+        function processGitHubFiles(tree) {
+            const files = [];
+            
+            tree.forEach(item => {
+                // 只处理文件，不处理目录
+                if (item.type === 'blob') {
+                    const path = item.path;
+                    const lastSlashIndex = path.lastIndexOf('/');
+                    const fileName = lastSlashIndex >= 0 ? path.substring(lastSlashIndex + 1) : path;
+                    
+                    // 提取文件扩展名
+                    const lastDotIndex = fileName.lastIndexOf('.');
+                    let extension = '';
+                    let nameWithoutExtension = fileName;
+                    
+                    if (lastDotIndex > 0) {
+                        extension = fileName.substring(lastDotIndex + 1).toLowerCase();
+                        nameWithoutExtension = fileName.substring(0, lastDotIndex);
+                    }
+                    
+                    files.push({
+                        name: fileName,
+                        extension: extension || '无扩展名',
+                        size: item.size || 0,
+                        path: path,
+                        url: `https://raw.githubusercontent.com/${document.getElementById('repo-input').value.trim()}/${document.getElementById('branch-input').value.trim() || 'main'}/${path}`
+                    });
+                }
+            });
+            
+            return files;
+        }
+
+        function displayFiles(files) {
+            // 保存当前文件列表
+            window.currentFiles = files;
+            window.currentSort = null;
+            
+            // 更新统计信息
+            updateStats(files);
+            
+            // 填充文件类型筛选器
+            populateExtensionFilter(files);
+            
+            // 渲染文件表格
+            renderFileTable(files);
+        }
+
+        function updateStats(files) {
+            // 文件总数
+            document.getElementById('total-files').textContent = files.length;
+            
+            // 总文件大小
+            const totalSize = files.reduce((sum, file) => sum + file.size, 0);
+            document.getElementById('total-size').textContent = formatFileSize(totalSize);
+            
+            // 文件类型数
+            const extensions = [...new Set(files.map(file => file.extension))];
+            document.getElementById('extension-count').textContent = extensions.length;
+            
+            // 自定义格式文件数
+            const customFilesCount = files.filter(file => customExtensions.includes(file.extension)).length;
+            document.getElementById('custom-files').textContent = customFilesCount;
+        }
+
+        function populateExtensionFilter(files) {
+            const filter = document.getElementById('extension-filter');
+            // 清空现有选项（保留"所有文件类型"）
+            while (filter.children.length > 1) {
+                filter.removeChild(filter.lastChild);
+            }
+            
+            const extensions = [...new Set(files.map(file => file.extension))];
+            
+            extensions.sort().forEach(ext => {
+                const option = document.createElement('option');
+                option.value = ext;
+                const count = files.filter(f => f.extension === ext).length;
+                option.textContent = `.${ext} (${count})`;
+                filter.appendChild(option);
+            });
+        }
+
+        function renderFileTable(files) {
+            const tableBody = document.getElementById('file-table-body');
+            tableBody.innerHTML = '';
+            
+            if (files.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="4" class="loading">未找到文件</td></tr>';
+                return;
+            }
+            
+            // 填充表格
+            files.forEach(file => {
+                const row = document.createElement('tr');
+                
+                // 文件名
+                const nameCell = document.createElement('td');
+                nameCell.textContent = file.name;
+                nameCell.className = 'file-name';
+                row.appendChild(nameCell);
+                
+                // 扩展名
+                const extCell = document.createElement('td');
+                const extClass = customExtensions.includes(file.extension) ? 'file-extension custom-extension' : 'file-extension';
+                extCell.innerHTML = `<span class="${extClass}">.${file.extension}</span>`;
+                row.appendChild(extCell);
+                
+                // 文件大小
+                const sizeCell = document.createElement('td');
+                sizeCell.textContent = formatFileSize(file.size);
+                sizeCell.className = 'file-size';
+                row.appendChild(sizeCell);
+                
+                // 操作按钮
+                const actionsCell = document.createElement('td');
+                actionsCell.className = 'file-actions';
+                
+                // 预览按钮
+                const previewBtn = document.createElement('button');
+                previewBtn.className = 'preview-btn';
+                previewBtn.textContent = '预览';
+                previewBtn.addEventListener('click', function() {
+                    showPreview(file);
+                });
+                actionsCell.appendChild(previewBtn);
+                
+                // 下载按钮
+                const downloadBtn = document.createElement('button');
+                downloadBtn.className = 'download-btn';
+                downloadBtn.textContent = '下载';
+                downloadBtn.addEventListener('click', function() {
+                    showPasswordModal(file.url, file.name);
+                });
+                actionsCell.appendChild(downloadBtn);
+                
+                row.appendChild(actionsCell);
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        function showPreview(file) {
+            const modal = document.getElementById('preview-modal');
+            const container = document.getElementById('preview-container');
+            container.innerHTML = '';
+            
+            // 根据文件类型创建不同的预览内容
+            if (imageExtensions.includes(file.extension)) {
+                // 图片预览
+                const img = document.createElement('img');
+                img.src = file.url;
+                img.alt = file.name;
+                img.className = 'preview-content';
+                container.appendChild(img);
+            } else if (videoExtensions.includes(file.extension)) {
+                // 视频预览
+                const video = document.createElement('video');
+                video.src = file.url;
+                video.controls = true;
+                video.className = 'preview-content';
+                container.appendChild(video);
+            } else if (audioExtensions.includes(file.extension)) {
+                // 音频预览
+                const audio = document.createElement('audio');
+                audio.src = file.url;
+                audio.controls = true;
+                audio.className = 'preview-content';
+                container.appendChild(audio);
+            } else {
+                // 不支持预览的文件类型
+                container.innerHTML = `<p>不支持预览此文件类型: .${file.extension}</p>`;
+            }
+            
+            modal.style.display = 'flex';
+        }
+
+        function showPasswordModal(downloadUrl, fileName) {
+            window.currentDownloadUrl = downloadUrl;
+            window.currentDownloadFileName = fileName;
+            document.getElementById('password-modal').style.display = 'flex';
+            document.getElementById('password-input').focus();
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 B';
+            
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function detectDeviceType() {
+            // 检测是否为电脑设备
+            const isDesktop = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isDesktop) {
+                // 如果是电脑设备，跳转到指定网页
+                window.location.href = "https://dongshengamestudio.github.io/ERROR30081690014443201/";
+            }
+        }
+
+        function detectDevTools() {
+            // 检测F12开发者工具
+            const devtools = {
+                open: false,
+                orientation: null
+            };
+            
+            const threshold = 160;
+            
+            const emitEvent = (isOpen, orientation) => {
+                if (devtools.open !== isOpen || devtools.orientation !== orientation) {
+                    devtools.open = isOpen;
+                    devtools.orientation = orientation;
+                    
+                    if (devtools.open) {
+                        // 检测到开发者工具打开，跳转到指定网页
+                        window.location.href = "https://dongshengamestudio.github.io/ERROR30081690014443201/";
+                    }
+                }
+            };
+            
+            setInterval(() => {
+                const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+                const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+                const orientation = widthThreshold ? 'vertical' : 'horizontal';
+                
+                if (!(heightThreshold && widthThreshold) && 
+                    ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || 
+                     widthThreshold || heightThreshold)) {
+                    emitEvent(true, orientation);
+                } else {
+                    emitEvent(false, null);
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>
